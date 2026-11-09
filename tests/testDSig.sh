@@ -697,6 +697,7 @@ execDSigTest $res_success \
     "--enabled-key-data der-encoded-key-value,key-name,eddsa $eddsa_priv_key_option:TestKeyName-eddsa-ed25519 $topfolder/keys/eddsa/eddsa-ed25519-key.$eddsa_priv_key_format --pwd secret123" \
     "--enabled-key-data der-encoded-key-value,eddsa"
 
+if [ "z$xmlsec_feature_ed448" = "zyes" ] ; then
 execDSigTest $res_success \
     "" \
     "aleksey-xmldsig-01/enveloping-sha256-eddsa-ed448-der-encoded-key-value" \
@@ -705,6 +706,7 @@ execDSigTest $res_success \
     "--enabled-key-data der-encoded-key-value,eddsa" \
     "--enabled-key-data der-encoded-key-value,key-name,eddsa $eddsa_priv_key_option:TestKeyName-eddsa-ed448 $topfolder/keys/eddsa/eddsa-ed448-key.$eddsa_priv_key_format --pwd secret123" \
     "--enabled-key-data der-encoded-key-value,eddsa"
+fi
 
 
 if [ "z$xmlsec_feature_x509_data_lookup" = "zyes" ] ; then
@@ -1954,6 +1956,7 @@ if [ "z$xmlsec_feature_context_string" = "zyes" ] ; then
         "$pub_key_option:TestKeyName-eddsa-ed25519 $topfolder/keys/eddsa/eddsa-ed25519-pubkey.$pub_key_format"
 fi
 
+if [ "z$xmlsec_feature_ed448" = "zyes" ] ; then
 execDSigTest $res_success \
     "" \
     "aleksey-xmldsig-01/enveloped-sha256-eddsa-ed448" \
@@ -1981,6 +1984,7 @@ if [ "z$xmlsec_feature_context_string" = "zyes" ] ; then
         "$pub_key_option:TestKeyName-eddsa-ed448 $topfolder/keys/eddsa/eddsa-ed448-pubkey.$pub_key_format" \
         "$eddsa_priv_key_option:TestKeyName-eddsa-ed448 $topfolder/keys/eddsa/eddsa-ed448-key.$eddsa_priv_key_format --pwd secret123" \
         "$pub_key_option:TestKeyName-eddsa-ed448 $topfolder/keys/eddsa/eddsa-ed448-pubkey.$pub_key_format"
+fi
 fi
 
 

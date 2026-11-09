@@ -112,10 +112,13 @@ xmlSecOpenSSLKeyAgreementInitialize(xmlSecTransformPtr transform) {
     if(xmlSecTransformCheckId(transform, xmlSecOpenSSLTransformX25519Id)) {
         ctx->keyDataId = xmlSecOpenSSLKeyDataXdhId;
         ctx->expected_secret_len = 32;
-    } else if(xmlSecTransformCheckId(transform, xmlSecOpenSSLTransformX448Id)) {
+    } else
+#ifndef XMLSEC_NO_X448
+    if(xmlSecTransformCheckId(transform, xmlSecOpenSSLTransformX448Id)) {
         ctx->keyDataId = xmlSecOpenSSLKeyDataXdhId;
         ctx->expected_secret_len = 56;
     } else
+#endif /* XMLSEC_NO_X448 */
 #endif /* XMLSEC_NO_XDH */
     {
         xmlSecInternalError("Unknown key agreement transform",
@@ -555,6 +558,7 @@ xmlSecOpenSSLTransformX25519GetKlass(void) {
     return(&xmlSecOpenSSLX25519Klass);
 }
 
+#ifndef XMLSEC_NO_X448
 /* X448 Transform Klass */
 XMLSEC_OPENSSL_KEY_AGREEMENT_KLASS(X448)
 
@@ -566,6 +570,7 @@ xmlSecTransformId
 xmlSecOpenSSLTransformX448GetKlass(void) {
     return(&xmlSecOpenSSLX448Klass);
 }
+#endif /* XMLSEC_NO_X448 */
 
 #endif /* XMLSEC_NO_XDH */
 

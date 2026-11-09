@@ -97,7 +97,7 @@ XML Security library supports the following features as defined in
 | [ECDSA-SHA3-256](https://www.ietf.org/rfc/rfc9231.html#name-ecdsa-sha-ecdsa-ripemd160-e) | Optional | Yes | No | Yes | Yes [(2)](#new-windows-required) | No | Yes |
 | [ECDSA-SHA3-384](https://www.ietf.org/rfc/rfc9231.html#name-ecdsa-sha-ecdsa-ripemd160-e) | Optional | Yes | No | Yes | Yes [(2)](#new-windows-required) | No | Yes |
 | [ECDSA-SHA3-512](https://www.ietf.org/rfc/rfc9231.html#name-ecdsa-sha-ecdsa-ripemd160-e) | Optional | Yes | No | Yes | Yes [(2)](#new-windows-required) | No | Yes |
-| [EdDSA](https://www.w3.org/2021/04/xmldsig-more) (Ed25519, Ed25519ctx [(9)](#eddsa-ctx), Ed25519ph, Ed448, Ed448ph) | Optional | Yes [(12)](#openssl35-required) | Yes [(10)](#only-ed25519) | Yes [(14)](#gnutls-eddsa-limited) | No | No | No |
+| [EdDSA](https://www.w3.org/2021/04/xmldsig-more) (Ed25519, Ed25519ctx [(9)](#eddsa-ctx), Ed25519ph, Ed448, Ed448ph) | Optional | Yes [(12)](#openssl35-required) [(16)](#libressl-no-ed448) | Yes [(10)](#only-ed25519) | Yes [(14)](#gnutls-eddsa-limited) | No | No | No |
 | [RSASSA-PSS-SHA1 without Parameters](https://www.ietf.org/rfc/rfc9231.html#section-2.3.10) | Optional (use is DISCOURAGED) | Yes | Yes | No | Yes | No | Yes |
 | [RSASSA-PSS-SHA2-224 without Parameters](https://www.ietf.org/rfc/rfc9231.html#section-2.3.10) | Optional | Yes | Yes | No | No | No | No |
 | [RSASSA-PSS-SHA2-256 without Parameters](https://www.ietf.org/rfc/rfc9231.html#section-2.3.10) | Optional | Yes | Yes | Yes | Yes | No | Yes |
@@ -139,6 +139,7 @@ XML Security library supports the following features as defined in
 13. <a id="keydata-runtime"></a> The feature is disabled by default but can be enabled at runtime (for example, with the `xmlsec --enabled-key-data` command line option).
 14. <a id="gnutls-eddsa-limited"></a> Only Ed25519 and Ed448 are supported; the Ed25519ctx, Ed25519ph and Ed448ph variants are not supported.
 15. <a id="mscrypto-x509-digest-write-only"></a> MSCrypto can only write the X509Digest element (i.e. it is supported when creating a signature); the key cannot be resolved from the X509Digest element during verification.
+16. <a id="libressl-no-ed448"></a> When built with LibreSSL, only Ed25519 is supported; Ed448 is not supported.
 
 ### Test vectors
 

@@ -440,15 +440,19 @@ xmlSecOpenSSLEvpKeyDataGetKeySize(xmlSecKeyDataPtr data) {
     /* key sizes match the values returned by EVP_PKEY_get_bits() on OpenSSL 3.0+ */
     case EVP_PKEY_ED25519:
         return(256);
+#ifndef XMLSEC_NO_ED448
     case EVP_PKEY_ED448:
         return(456);
+#endif /* XMLSEC_NO_ED448 */
 #endif /* XMLSEC_NO_EDDSA */
 
 #ifndef XMLSEC_NO_XDH
     case EVP_PKEY_X25519:
         return(253);
+#ifndef XMLSEC_NO_X448
     case EVP_PKEY_X448:
         return(448);
+#endif /* XMLSEC_NO_X448 */
 #endif /* XMLSEC_NO_XDH */
 
     default:
@@ -856,13 +860,17 @@ xmlSecOpenSSLEvpKeyGetKeyDataId(EVP_PKEY *pKey) {
 
 #ifndef XMLSEC_NO_EDDSA
     case EVP_PKEY_ED25519:
+#ifndef XMLSEC_NO_ED448
     case EVP_PKEY_ED448:
+#endif /* XMLSEC_NO_ED448 */
         return (xmlSecOpenSSLKeyDataEdDSAId);
 #endif /* XMLSEC_NO_EDDSA */
 
 #ifndef XMLSEC_NO_XDH
     case EVP_PKEY_X25519:
+#ifndef XMLSEC_NO_X448
     case EVP_PKEY_X448:
+#endif /* XMLSEC_NO_X448 */
         return (xmlSecOpenSSLKeyDataXdhId);
 #endif /* XMLSEC_NO_XDH */
 
@@ -4298,7 +4306,9 @@ xmlSecOpenSSLKeyValueEdDSACheckKeyType(EVP_PKEY* pKey)
 
     switch(xmlSecOpenSSLEvpKeyGetId(pKey)) {
     case EVP_PKEY_ED25519:
+#ifndef XMLSEC_NO_ED448
     case EVP_PKEY_ED448:
+#endif /* XMLSEC_NO_ED448 */
         return(0);
     default:
         return(1);
@@ -4359,7 +4369,9 @@ xmlSecOpenSSLKeyValueXdhCheckKeyType(EVP_PKEY* pKey)
 
     switch(xmlSecOpenSSLEvpKeyGetId(pKey)) {
     case EVP_PKEY_X25519:
+#ifndef XMLSEC_NO_X448
     case EVP_PKEY_X448:
+#endif /* XMLSEC_NO_X448 */
         return(0);
     default:
         return(1);

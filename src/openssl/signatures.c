@@ -430,12 +430,14 @@ xmlSecOpenSSLEvpSignatureCheckId(xmlSecTransformPtr transform) {
     if(xmlSecTransformCheckId(transform, xmlSecOpenSSLTransformEdDSAEd25519phId)) {
         return(1);
     } else
+#ifndef XMLSEC_NO_ED448
     if(xmlSecTransformCheckId(transform, xmlSecOpenSSLTransformEdDSAEd448Id)) {
         return(1);
     } else
     if(xmlSecTransformCheckId(transform, xmlSecOpenSSLTransformEdDSAEd448phId)) {
         return(1);
     } else
+#endif /* XMLSEC_NO_ED448 */
 #endif /* XMLSEC_NO_EDDSA */
 
     /******************************************************************************
@@ -855,6 +857,7 @@ xmlSecOpenSSLEvpSignatureInitialize(xmlSecTransformPtr transform) {
         ctx->signatureFormat = xmlSecOpenSSLEvpSignatureFormat_DoNothing;
         ctx->signatureName   = "ED25519ph";
     } else
+#ifndef XMLSEC_NO_ED448
     if(xmlSecTransformCheckId(transform, xmlSecOpenSSLTransformEdDSAEd448Id)) {
         ctx->keyId           = xmlSecOpenSSLKeyDataEdDSAId;
         ctx->signatureFormat = xmlSecOpenSSLEvpSignatureFormat_DoNothing;
@@ -865,6 +868,7 @@ xmlSecOpenSSLEvpSignatureInitialize(xmlSecTransformPtr transform) {
         ctx->signatureFormat = xmlSecOpenSSLEvpSignatureFormat_DoNothing;
         ctx->signatureName   = "ED448ph";
     } else
+#endif /* XMLSEC_NO_ED448 */
 #endif /* XMLSEC_NO_EDDSA */
 
     /******************************************************************************
@@ -2850,6 +2854,7 @@ xmlSecOpenSSLTransformEdDSAEd25519phGetKlass(void) {
     return(&xmlSecOpenSSLEdDSAEd25519phKlass);
 }
 
+#ifndef XMLSEC_NO_ED448
 /* EdDSA-Ed448 signature transform: xmlSecOpenSSLEdDSAEd448Klass */
 XMLSEC_OPENSSL_EVP_SIGNATURE_KLASS(EdDSAEd448)
 
@@ -2873,6 +2878,7 @@ xmlSecTransformId
 xmlSecOpenSSLTransformEdDSAEd448phGetKlass(void) {
     return(&xmlSecOpenSSLEdDSAEd448phKlass);
 }
+#endif /* XMLSEC_NO_ED448 */
 
 #endif /* XMLSEC_NO_EDDSA */
 

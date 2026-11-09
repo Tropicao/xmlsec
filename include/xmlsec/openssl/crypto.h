@@ -82,6 +82,8 @@
 #define XMLSEC_NO_DH                    1
 #define XMLSEC_NO_CAMELLIA              1
 #define XMLSEC_NO_CHACHA20              1
+#define XMLSEC_NO_X448                  1
+#define XMLSEC_NO_ED448                 1
 #endif /* defined(LIBRESSL_VERSION_NUMBER) */
 
 #if !defined(XMLSEC_OPENSSL_API_350)
@@ -1352,6 +1354,7 @@ XMLSEC_CRYPTO_EXPORT xmlSecTransformId xmlSecOpenSSLTransformEdDSAEd25519ctxGetK
 #define xmlSecOpenSSLTransformEdDSAEd25519phId  \
         xmlSecOpenSSLTransformEdDSAEd25519phGetKlass()
 XMLSEC_CRYPTO_EXPORT xmlSecTransformId xmlSecOpenSSLTransformEdDSAEd25519phGetKlass(void);
+#ifndef XMLSEC_NO_ED448
 /**
  * @brief The EdDSA-Ed448 signature transform klass.
  */
@@ -1364,6 +1367,7 @@ XMLSEC_CRYPTO_EXPORT xmlSecTransformId xmlSecOpenSSLTransformEdDSAEd448GetKlass(
 #define xmlSecOpenSSLTransformEdDSAEd448phId  \
         xmlSecOpenSSLTransformEdDSAEd448phGetKlass()
 XMLSEC_CRYPTO_EXPORT xmlSecTransformId xmlSecOpenSSLTransformEdDSAEd448phGetKlass(void);
+#endif /* XMLSEC_NO_ED448 */
 
 
 #endif /* XMLSEC_NO_EDDSA */
@@ -1393,12 +1397,14 @@ XMLSEC_CRYPTO_EXPORT EVP_PKEY*          xmlSecOpenSSLKeyDataXdhGetEvp       (xml
 #define xmlSecOpenSSLTransformX25519Id  \
         xmlSecOpenSSLTransformX25519GetKlass()
 XMLSEC_CRYPTO_EXPORT xmlSecTransformId xmlSecOpenSSLTransformX25519GetKlass(void);
+#ifndef XMLSEC_NO_X448
 /**
  * @brief The X448 key agreement transform klass.
  */
 #define xmlSecOpenSSLTransformX448Id  \
         xmlSecOpenSSLTransformX448GetKlass()
 XMLSEC_CRYPTO_EXPORT xmlSecTransformId xmlSecOpenSSLTransformX448GetKlass(void);
+#endif /* XMLSEC_NO_X448 */
 
 
 #endif /* XMLSEC_NO_XDH */

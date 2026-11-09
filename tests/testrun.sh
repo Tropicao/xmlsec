@@ -280,6 +280,16 @@ else
     xmlsec_feature_ml_kem="no"
 fi
 
+# Support for X448 key agreement and Ed448 signatures:
+# only OpenSSL (except LibreSSL) and GnuTLS implement them
+if [ "z$crypto" = "zgnutls" -o \( "z$crypto" = "zopenssl" -a "z$xmlsec_openssl_flavor" != "zlibressl" \) ] ; then
+    xmlsec_feature_x448="yes"
+    xmlsec_feature_ed448="yes"
+else
+    xmlsec_feature_x448="no"
+    xmlsec_feature_ed448="no"
+fi
+
 #
 # Setup keys config
 #

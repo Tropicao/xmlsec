@@ -769,6 +769,7 @@ execEncTest $res_success \
     "--enabled-key-data agreement-method,enc-key,key-name,key-value,xdh --max-encrypted-key-level 3 --session-key aes-256 $xdh_priv_key_option:originator-key-name $topfolder/keys/xdh/xdh-x25519-first-key.$xdh_priv_key_format --pwd secret123 $pub_key_option:recipient-key-name $topfolder/keys/xdh/xdh-x25519-second-pubkey.$pub_key_format --xml-data $topfolder/aleksey-xmlenc-01/enc_xdh_x25519_concatkdf_sha256_kw_aes256_aes128gcm.data" \
     "--enabled-key-data agreement-method,enc-key,key-name,key-value,xdh --max-encrypted-key-level 3 $xdh_priv_key_option:recipient-key-name $topfolder/keys/xdh/xdh-x25519-second-key.$xdh_priv_key_format --pwd secret123 $pub_key_option:originator-key-name $topfolder/keys/xdh/xdh-x25519-first-pubkey.$pub_key_format"
 
+if [ "z$xmlsec_feature_x448" = "zyes" ] ; then
 # X448 + ConcatKDF + SHA2
 execEncTest $res_success \
     "" \
@@ -778,6 +779,7 @@ execEncTest $res_success \
     "--enabled-key-data agreement-method,enc-key,key-name,key-value,xdh --max-encrypted-key-level 3 $xdh_priv_key_option:recipient-key-name $topfolder/keys/xdh/xdh-x448-second-key.$xdh_priv_key_format --pwd secret123 $pub_key_option:originator-key-name $topfolder/keys/xdh/xdh-x448-first-pubkey.$pub_key_format" \
     "--enabled-key-data agreement-method,enc-key,key-name,key-value,xdh --max-encrypted-key-level 3 --session-key aes-256 $xdh_priv_key_option:originator-key-name $topfolder/keys/xdh/xdh-x448-first-key.$xdh_priv_key_format --pwd secret123 $pub_key_option:recipient-key-name $topfolder/keys/xdh/xdh-x448-second-pubkey.$pub_key_format --xml-data $topfolder/aleksey-xmlenc-01/enc_xdh_x448_concatkdf_sha256_kw_aes256_aes128gcm.data" \
     "--enabled-key-data agreement-method,enc-key,key-name,key-value,xdh --max-encrypted-key-level 3 $xdh_priv_key_option:recipient-key-name $topfolder/keys/xdh/xdh-x448-second-key.$xdh_priv_key_format --pwd secret123 $pub_key_option:originator-key-name $topfolder/keys/xdh/xdh-x448-first-pubkey.$pub_key_format"
+fi
 
 # X25519 + ConcatKDF + SHA384 + KW-AES256 + AES128-GCM
 execEncTest $res_success \
@@ -789,6 +791,7 @@ execEncTest $res_success \
     "--enabled-key-data agreement-method,enc-key,key-name,key-value,xdh --max-encrypted-key-level 3 --session-key aes-256 $xdh_priv_key_option:originator-key-name $topfolder/keys/xdh/xdh-x25519-first-key.$xdh_priv_key_format --pwd secret123 $pub_key_option:recipient-key-name $topfolder/keys/xdh/xdh-x25519-second-pubkey.$pub_key_format --xml-data $topfolder/aleksey-xmlenc-01/enc_xdh_x25519_concatkdf_sha384_kw_aes256_aes128gcm.data" \
     "--enabled-key-data agreement-method,enc-key,key-name,key-value,xdh --max-encrypted-key-level 3 $xdh_priv_key_option:recipient-key-name $topfolder/keys/xdh/xdh-x25519-second-key.$xdh_priv_key_format --pwd secret123 $pub_key_option:originator-key-name $topfolder/keys/xdh/xdh-x25519-first-pubkey.$pub_key_format"
 
+if [ "z$xmlsec_feature_x448" = "zyes" ] ; then
 # X448 + ConcatKDF + SHA384 + KW-AES256 + AES128-GCM
 execEncTest $res_success \
     "" \
@@ -798,6 +801,7 @@ execEncTest $res_success \
     "--enabled-key-data agreement-method,enc-key,key-name,key-value,xdh --max-encrypted-key-level 3 $xdh_priv_key_option:recipient-key-name $topfolder/keys/xdh/xdh-x448-second-key.$xdh_priv_key_format --pwd secret123 $pub_key_option:originator-key-name $topfolder/keys/xdh/xdh-x448-first-pubkey.$pub_key_format" \
     "--enabled-key-data agreement-method,enc-key,key-name,key-value,xdh --max-encrypted-key-level 3 --session-key aes-256 $xdh_priv_key_option:originator-key-name $topfolder/keys/xdh/xdh-x448-first-key.$xdh_priv_key_format --pwd secret123 $pub_key_option:recipient-key-name $topfolder/keys/xdh/xdh-x448-second-pubkey.$pub_key_format --xml-data $topfolder/aleksey-xmlenc-01/enc_xdh_x448_concatkdf_sha384_kw_aes256_aes128gcm.data" \
     "--enabled-key-data agreement-method,enc-key,key-name,key-value,xdh --max-encrypted-key-level 3 $xdh_priv_key_option:recipient-key-name $topfolder/keys/xdh/xdh-x448-second-key.$xdh_priv_key_format --pwd secret123 $pub_key_option:originator-key-name $topfolder/keys/xdh/xdh-x448-first-pubkey.$pub_key_format"
+fi
 
 # X25519 + HKDF + SHA256 + KW-AES256 + AES128-GCM
 execEncTest $res_success \
@@ -809,6 +813,7 @@ execEncTest $res_success \
     "--enabled-key-data agreement-method,enc-key,key-name,key-value,xdh --max-encrypted-key-level 3 --session-key aes-128 $xdh_priv_key_option:originator-key-name $topfolder/keys/xdh/xdh-x25519-first-key.$xdh_priv_key_format --pwd secret123 $pub_key_option:recipient-key-name $topfolder/keys/xdh/xdh-x25519-second-pubkey.$pub_key_format --xml-data $topfolder/aleksey-xmlenc-01/enc_xdh_x25519_hkdf_sha256_kw_aes256_aes128gcm.data" \
     "--enabled-key-data agreement-method,enc-key,key-name,key-value,xdh --max-encrypted-key-level 3 $xdh_priv_key_option:recipient-key-name $topfolder/keys/xdh/xdh-x25519-second-key.$xdh_priv_key_format --pwd secret123 $pub_key_option:originator-key-name $topfolder/keys/xdh/xdh-x25519-first-pubkey.$pub_key_format"
 
+if [ "z$xmlsec_feature_x448" = "zyes" ] ; then
 # X448 + HKDF + SHA256 + KW-AES256 + AES128-GCM
 execEncTest $res_success \
     "" \
@@ -818,6 +823,7 @@ execEncTest $res_success \
     "--enabled-key-data agreement-method,enc-key,key-name,key-value,xdh --max-encrypted-key-level 3 $xdh_priv_key_option:recipient-key-name $topfolder/keys/xdh/xdh-x448-second-key.$xdh_priv_key_format --pwd secret123 $pub_key_option:originator-key-name $topfolder/keys/xdh/xdh-x448-first-pubkey.$pub_key_format" \
     "--enabled-key-data agreement-method,enc-key,key-name,key-value,xdh --max-encrypted-key-level 3 --session-key aes-128 $xdh_priv_key_option:originator-key-name $topfolder/keys/xdh/xdh-x448-first-key.$xdh_priv_key_format --pwd secret123 $pub_key_option:recipient-key-name $topfolder/keys/xdh/xdh-x448-second-pubkey.$pub_key_format --xml-data $topfolder/aleksey-xmlenc-01/enc_xdh_x448_hkdf_sha256_kw_aes256_aes128gcm.data" \
     "--enabled-key-data agreement-method,enc-key,key-name,key-value,xdh --max-encrypted-key-level 3 $xdh_priv_key_option:recipient-key-name $topfolder/keys/xdh/xdh-x448-second-key.$xdh_priv_key_format --pwd secret123 $pub_key_option:originator-key-name $topfolder/keys/xdh/xdh-x448-first-pubkey.$pub_key_format"
+fi
 
 # X25519 + HKDF + SHA384 + KW-AES256 + AES128-GCM
 execEncTest $res_success \
@@ -829,6 +835,7 @@ execEncTest $res_success \
     "--enabled-key-data agreement-method,enc-key,key-name,key-value,xdh --max-encrypted-key-level 3 --session-key aes-128 $xdh_priv_key_option:originator-key-name $topfolder/keys/xdh/xdh-x25519-first-key.$xdh_priv_key_format --pwd secret123 $pub_key_option:recipient-key-name $topfolder/keys/xdh/xdh-x25519-second-pubkey.$pub_key_format --xml-data $topfolder/aleksey-xmlenc-01/enc_xdh_x25519_hkdf_sha384_kw_aes256_aes128gcm.data" \
     "--enabled-key-data agreement-method,enc-key,key-name,key-value,xdh --max-encrypted-key-level 3 $xdh_priv_key_option:recipient-key-name $topfolder/keys/xdh/xdh-x25519-second-key.$xdh_priv_key_format --pwd secret123 $pub_key_option:originator-key-name $topfolder/keys/xdh/xdh-x25519-first-pubkey.$pub_key_format"
 
+if [ "z$xmlsec_feature_x448" = "zyes" ] ; then
 # X448 + HKDF + SHA384 + KW-AES256 + AES128-GCM
 execEncTest $res_success \
     "" \
@@ -838,6 +845,7 @@ execEncTest $res_success \
     "--enabled-key-data agreement-method,enc-key,key-name,key-value,xdh --max-encrypted-key-level 3 $xdh_priv_key_option:recipient-key-name $topfolder/keys/xdh/xdh-x448-second-key.$xdh_priv_key_format --pwd secret123 $pub_key_option:originator-key-name $topfolder/keys/xdh/xdh-x448-first-pubkey.$pub_key_format" \
     "--enabled-key-data agreement-method,enc-key,key-name,key-value,xdh --max-encrypted-key-level 3 --session-key aes-128 $xdh_priv_key_option:originator-key-name $topfolder/keys/xdh/xdh-x448-first-key.$xdh_priv_key_format --pwd secret123 $pub_key_option:recipient-key-name $topfolder/keys/xdh/xdh-x448-second-pubkey.$pub_key_format --xml-data $topfolder/aleksey-xmlenc-01/enc_xdh_x448_hkdf_sha384_kw_aes256_aes128gcm.data" \
     "--enabled-key-data agreement-method,enc-key,key-name,key-value,xdh --max-encrypted-key-level 3 $xdh_priv_key_option:recipient-key-name $topfolder/keys/xdh/xdh-x448-second-key.$xdh_priv_key_format --pwd secret123 $pub_key_option:originator-key-name $topfolder/keys/xdh/xdh-x448-first-pubkey.$pub_key_format"
+fi
 
 # X25519 + HKDF + SHA512 + KW-AES256 + AES128-GCM
 execEncTest $res_success \
@@ -849,6 +857,7 @@ execEncTest $res_success \
     "--enabled-key-data agreement-method,enc-key,key-name,key-value,xdh --max-encrypted-key-level 3 --session-key aes-128 $xdh_priv_key_option:originator-key-name $topfolder/keys/xdh/xdh-x25519-first-key.$xdh_priv_key_format --pwd secret123 $pub_key_option:recipient-key-name $topfolder/keys/xdh/xdh-x25519-second-pubkey.$pub_key_format --xml-data $topfolder/aleksey-xmlenc-01/enc_xdh_x25519_hkdf_sha512_kw_aes256_aes128gcm.data" \
     "--enabled-key-data agreement-method,enc-key,key-name,key-value,xdh --max-encrypted-key-level 3 $xdh_priv_key_option:recipient-key-name $topfolder/keys/xdh/xdh-x25519-second-key.$xdh_priv_key_format --pwd secret123 $pub_key_option:originator-key-name $topfolder/keys/xdh/xdh-x25519-first-pubkey.$pub_key_format"
 
+if [ "z$xmlsec_feature_x448" = "zyes" ] ; then
 # X448 + HKDF + SHA512 + KW-AES256 + AES128-GCM
 execEncTest $res_success \
     "" \
@@ -858,6 +867,7 @@ execEncTest $res_success \
     "--enabled-key-data agreement-method,enc-key,key-name,key-value,xdh --max-encrypted-key-level 3 $xdh_priv_key_option:recipient-key-name $topfolder/keys/xdh/xdh-x448-second-key.$xdh_priv_key_format --pwd secret123 $pub_key_option:originator-key-name $topfolder/keys/xdh/xdh-x448-first-pubkey.$pub_key_format" \
     "--enabled-key-data agreement-method,enc-key,key-name,key-value,xdh --max-encrypted-key-level 3 --session-key aes-128 $xdh_priv_key_option:originator-key-name $topfolder/keys/xdh/xdh-x448-first-key.$xdh_priv_key_format --pwd secret123 $pub_key_option:recipient-key-name $topfolder/keys/xdh/xdh-x448-second-pubkey.$pub_key_format --xml-data $topfolder/aleksey-xmlenc-01/enc_xdh_x448_hkdf_sha512_kw_aes256_aes128gcm.data" \
     "--enabled-key-data agreement-method,enc-key,key-name,key-value,xdh --max-encrypted-key-level 3 $xdh_priv_key_option:recipient-key-name $topfolder/keys/xdh/xdh-x448-second-key.$xdh_priv_key_format --pwd secret123 $pub_key_option:originator-key-name $topfolder/keys/xdh/xdh-x448-first-pubkey.$pub_key_format"
+fi
 
 if [ "z$xmlsec_feature_x509_data_lookup" = "zyes" ] ; then
     execEncTest $res_success \

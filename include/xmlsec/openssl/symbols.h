@@ -182,11 +182,15 @@ extern "C" {
 #define xmlSecTransformEdDSAEd25519Id           xmlSecOpenSSLTransformEdDSAEd25519Id
 #define xmlSecTransformEdDSAEd25519ctxId        xmlSecOpenSSLTransformEdDSAEd25519ctxId
 #define xmlSecTransformEdDSAEd25519phId         xmlSecOpenSSLTransformEdDSAEd25519phId
+#ifndef XMLSEC_NO_ED448
 #define xmlSecTransformEdDSAEd448Id             xmlSecOpenSSLTransformEdDSAEd448Id
 #define xmlSecTransformEdDSAEd448phId           xmlSecOpenSSLTransformEdDSAEd448phId
+#endif /* XMLSEC_NO_ED448 */
 
 #define xmlSecTransformX25519Id                 xmlSecOpenSSLTransformX25519Id
+#ifndef XMLSEC_NO_X448
 #define xmlSecTransformX448Id                   xmlSecOpenSSLTransformX448Id
+#endif /* XMLSEC_NO_X448 */
 
 #define xmlSecTransformMLDSA44Id                xmlSecOpenSSLTransformMLDSA44Id
 #define xmlSecTransformMLDSA65Id                xmlSecOpenSSLTransformMLDSA65Id
